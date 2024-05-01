@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { supabase } from "@/lib/supabase";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
@@ -7,7 +8,11 @@ type Data = {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>,
+  res: NextApiResponse<Data>
 ) {
+  const supabaseClient = supabase;
+
+  console.log(supabaseClient);
+
   res.status(200).json({ name: "John Doe" });
 }
